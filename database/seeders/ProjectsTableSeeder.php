@@ -18,12 +18,12 @@ class ProjectsTableSeeder extends Seeder
     {
         for ($i = 0; $i < 100; $i++) {
             $project = new Project();
-
+            $project->type_id = rand(1, 50);
             $project->title = $faker->word();
             $project->date = $faker->dateTime();
             $project->description = $faker->paragraph();
-            $project->name = $faker->word();
-            $project->surname = $faker->word();
+            $project->name = $faker->firstName();
+            $project->surname = $faker->lastName();
 
             $project->save();
         }
