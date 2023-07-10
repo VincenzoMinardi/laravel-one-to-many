@@ -15,7 +15,8 @@ return new class extends Migration
     {
         Schema::create('types', function (Blueprint $table) {
             $table->id();
-            $table->timestamps();
+            $table->string('type', 50);
+            $table->string('collabs', 100);
         });
     }
 
