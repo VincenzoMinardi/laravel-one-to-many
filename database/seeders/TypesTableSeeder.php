@@ -21,6 +21,7 @@ class TypesTableSeeder extends Seeder
 
             $type->type = $faker->word();
             $type->collabs = $faker->name();
+
             $type->save();
         }
     }
