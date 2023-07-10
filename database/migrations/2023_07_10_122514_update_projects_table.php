@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::table('projects', function (Blueprint $table) {
             // creiamo la chiave esterna
-            $table->unsignedBigInteger('type_id');
+            $table->unsignedBigInteger('projects_type_id_foreign');
 
             // definiamo la colonna come chiave esterna
             $table->foreign('type_id')->references('id')->on('types');
