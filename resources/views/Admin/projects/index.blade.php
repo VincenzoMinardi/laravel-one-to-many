@@ -1,7 +1,8 @@
 @extends('admin.layouts.base')
 
 @section('contents')
-@if (session('delete_success'))
+<div class="container">
+    @if (session('delete_success'))
         @php $project = session('delete_success') @endphp
         <div class="alert alert-danger">
             The project "{{ $project->title }}" has been deleted forever
@@ -11,28 +12,28 @@
     <thead>
         <tr>
             <th scope="col">Title</th>
+            <th scope="col">Type</th>
             <th class="w-50" scope="col">Description</th>
             <th scope="col">Date</th>
             <th scope="col">Name</th>
             <th scope="col">Surname</th>
+            <th scope="col">Collabs</th>
         </tr>
     </thead>
     <tbody>
         @foreach ($projects as $project)
             <tr>
                 <th scope="row">{{$project->title}}</th>
+                <td>{{$project->type->type}}</td>
                 <td>{{$project->description}}</td>
                 <td>{{$project->date}}</td>
                 <td>{{$project->name}}</td>
                 <td>{{$project->surname}}</td>
+                <td>{{$project->type->collabs}}</td>
                 <td>
                     <a class="btn btn-primary" href="{{ route('admin.projects.show', ['project' => $project->id]) }}">View</a>
                     <a class="btn btn-warning" href="{{ route('admin.projects.edit', ['project' => $project->id]) }}">Edit</a>
-                    <button type="button" class="js-delete button " data-bs-toggle="modal" data-bs-target="#deleteModal" data-id="{{ $project->id }}"> Delete</button>
-                   
-                        Delete
-                    </button>
-                    
+                    <button type="button" class="js-delete btn btn-danger " data-bs-toggle="modal" data-bs-target="#deleteModal" data-id="{{ $project->id }}"> Delete</button>
                 </td>
             </tr>
             
@@ -68,6 +69,7 @@
 </div>
 <a class="btn btn-warning" href="{{ route('admin.projects.create', ['project' => $project->id]) }}">New</a>
 {{ $projects->links() }}
+</div>
 @endsection
 
 
