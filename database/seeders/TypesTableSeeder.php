@@ -19,8 +19,8 @@ class TypesTableSeeder extends Seeder
         for ($i = 0; $i < 100; $i++) {
             $type = new Type();
 
-            $type->title = $faker->word();
-            $type->description = $faker->paragraph();
+            $type->type = $faker->word();
+            $type->collabs = $faker->name();
             $type->save();
         }
     }
